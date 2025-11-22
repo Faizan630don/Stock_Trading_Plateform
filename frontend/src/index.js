@@ -42,13 +42,14 @@ root.render(
 
 function RedirectToDashboard(){
   useEffect(() => {
-    const target = process.env.REACT_APP_DASHBOARD_URL || localStorage.getItem('dashboard_url');
+    const envDash2 = process.env.REACT_APP_DASHBOARD_URL;
+    const savedDash2 = localStorage.getItem('dashboard_url');
+    const guessDash2 = (window.location.hostname.endsWith('onrender.com') && window.location.hostname.includes('frontend'))
+      ? `${window.location.protocol}//${window.location.hostname.replace('frontend', 'dashboard')}/`
+      : null;
+    const target = envDash2 || savedDash2 || (window.location.hostname === 'localhost' ? 'http://localhost:3001/' : (guessDash2 || null));
     if (target) {
       window.location.href = target;
-      return;
-    }
-    if (window.location.hostname === 'localhost') {
-      window.location.href = 'http://localhost:3002/';
       return;
     }
     window.location.href = '/';
