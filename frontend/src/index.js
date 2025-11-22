@@ -13,6 +13,8 @@ import Navbar from './landing_page/Navbar';
 import Footer from './landing_page/Footer';
 import NotFound from './landing_page/NotFound';
 
+const envDash = process.env.REACT_APP_DASHBOARD_URL;
+try { if (envDash) localStorage.setItem('dashboard_url', envDash); } catch {}
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
