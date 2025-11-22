@@ -45,22 +45,11 @@ function RedirectToDashboard(){
       window.location.href = target;
       return;
     }
-    const ports = [3001, 3002, 3003, 3004].filter(p => String(p) !== window.location.port);
-    let redirected = false;
-    ports.forEach(p => {
-      const img = new Image();
-      img.onload = () => {
-        if (redirected) return;
-        redirected = true;
-        window.location.href = `http://localhost:${p}/`;
-      };
-      img.src = `http://localhost:${p}/logo.png?cb=${Date.now()}`;
-    });
-    setTimeout(() => {
-      if (!redirected) {
-        alert('Dashboard server not detected. Please run npm start in dashboard folder.');
-      }
-    }, 1200);
+    if (window.location.hostname === 'localhost') {
+      window.location.href = 'http://localhost:3002/';
+      return;
+    }
+    window.location.href = '/';
   }, []);
   return <div style={{padding:"40px", textAlign:"center"}}>Redirecting to dashboard...</div>;
 }

@@ -40,8 +40,12 @@ function SignUp() {
                 setSuccess('Signup successful! Redirecting to dashboard...');
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
+                if (!process.env.REACT_APP_DASHBOARD_URL && window.location.hostname === 'localhost') {
+                    localStorage.setItem('dashboard_url', 'http://localhost:3002/');
+                }
                 setTimeout(() => {
-                    const dash = process.env.REACT_APP_DASHBOARD_URL || localStorage.getItem('dashboard_url') || '/dashboard';
+                    const envDash = process.env.REACT_APP_DASHBOARD_URL;
+                    const dash = envDash ? envDash : (window.location.hostname === 'localhost' ? 'http://localhost:3001/' : '/');
                     window.location.href = dash;
                 }, 800);
             }
@@ -50,9 +54,13 @@ function SignUp() {
             const fakeUser = { username, email };
             localStorage.setItem('token', fakeToken);
             localStorage.setItem('user', JSON.stringify(fakeUser));
+            if (!process.env.REACT_APP_DASHBOARD_URL && window.location.hostname === 'localhost') {
+                localStorage.setItem('dashboard_url', 'http://localhost:3002/');
+            }
             setSuccess('Signup successful! Redirecting to dashboard...');
             setTimeout(() => {
-                const dash = process.env.REACT_APP_DASHBOARD_URL || localStorage.getItem('dashboard_url') || '/dashboard';
+                const envDash = process.env.REACT_APP_DASHBOARD_URL;
+                const dash = envDash ? envDash : (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : '/');
                 window.location.href = dash;
             }, 800);
         } finally {

@@ -81,10 +81,7 @@ function Navbar() {
                   {app.href.startsWith('/') ? (
                     <Link className="btn btn-primary" to={app.href} onClick={()=>setOpen(false)}>Open</Link>
                   ) : (
-                    <a className="btn btn-primary" href={app.href} target="_blank" rel="noreferrer" onClick={()=>{
-                      localStorage.setItem('dashboard_url', app.href);
-                      setOpen(false);
-                    }}>Open</a>
+                    <a className="btn btn-primary" href={app.href} target="_blank" rel="noreferrer" onClick={()=>setOpen(false)}>Open</a>
                   )}
                 </div>
               </div>
