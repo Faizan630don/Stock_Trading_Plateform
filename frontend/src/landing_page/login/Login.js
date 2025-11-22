@@ -28,7 +28,8 @@ function Login() {
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
                 setTimeout(() => {
-                    window.location.href = `/dashboard`;
+                    const dash = process.env.REACT_APP_DASHBOARD_URL || localStorage.getItem('dashboard_url') || '/dashboard';
+                    window.location.href = dash;
                 }, 800);
             }
         } catch (err) {
@@ -38,7 +39,8 @@ function Login() {
             localStorage.setItem('user', JSON.stringify(fakeUser));
             setSuccess('Login successful! Redirecting to dashboard...');
             setTimeout(() => {
-                window.location.href = `/dashboard`;
+                const dash = process.env.REACT_APP_DASHBOARD_URL || localStorage.getItem('dashboard_url') || '/dashboard';
+                window.location.href = dash;
             }, 800);
         } finally {
             setLoading(false);

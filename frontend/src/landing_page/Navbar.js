@@ -14,6 +14,13 @@ function Navbar() {
     { id: 'smallcase', name: 'Smallcase', desc: 'Thematic baskets', href: 'https://smallcase.zerodha.com/', icon: 'fa-th-large' },
     { id: 'dashboard', name: 'Trading Dashboard', desc: 'Local app', href: '/dashboard', icon: 'fa-dashboard' },
   ];
+  const links = [
+    { to: '/signup', label: 'Signup', icon: 'fa-user-plus' },
+    { to: '/about', label: 'About', icon: 'fa-info-circle' },
+    { to: '/product', label: 'Products', icon: 'fa-cubes' },
+    { to: '/pricing', label: 'Pricing', icon: 'fa-inr' },
+    { to: '/support', label: 'Support', icon: 'fa-life-ring' },
+  ];
 
   return (
     <div className="border-bottom" style={{ backgroundColor: "#FFF " }}>
@@ -48,11 +55,20 @@ function Navbar() {
           borderRadius: 10, boxShadow: '0 8px 24px rgba(0,0,0,0.12)', width: 'min(640px, calc(100vw - 24px))', padding: 16, zIndex: 2000
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-            <div style={{ fontSize: 14, color: '#666' }}>Explore</div>
+            <div style={{ fontSize: 14, color: '#666' }}>Menu</div>
             <button className="btn" style={{ background: 'transparent' }} onClick={()=>setOpen(false)}>
               <i className="fa fa-times" aria-hidden="true"></i>
             </button>
           </div>
+          <ul className="list-unstyled mb-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 8 }}>
+            {links.map(item => (
+              <li key={item.to}>
+                <Link className="dropdown-item" to={item.to} onClick={()=>setOpen(false)}>
+                  <i className={`fa ${item.icon}`} style={{ marginRight: 8, color: '#4184f3' }}></i>{item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 12 }}>
             {apps.map(app => (
               <div key={app.id} style={{ border: '1px solid #f0f0f0', borderRadius: 8, padding: 12 }}>

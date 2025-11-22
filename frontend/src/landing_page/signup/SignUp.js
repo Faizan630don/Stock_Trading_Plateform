@@ -41,7 +41,8 @@ function SignUp() {
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
                 setTimeout(() => {
-                    window.location.href = `/dashboard`;
+                    const dash = process.env.REACT_APP_DASHBOARD_URL || localStorage.getItem('dashboard_url') || '/dashboard';
+                    window.location.href = dash;
                 }, 800);
             }
         } catch (err) {
@@ -51,7 +52,8 @@ function SignUp() {
             localStorage.setItem('user', JSON.stringify(fakeUser));
             setSuccess('Signup successful! Redirecting to dashboard...');
             setTimeout(() => {
-                window.location.href = `/dashboard`;
+                const dash = process.env.REACT_APP_DASHBOARD_URL || localStorage.getItem('dashboard_url') || '/dashboard';
+                window.location.href = dash;
             }, 800);
         } finally {
             setLoading(false);

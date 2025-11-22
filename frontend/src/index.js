@@ -40,7 +40,7 @@ root.render(
 
 function RedirectToDashboard(){
   useEffect(() => {
-    const target = process.env.REACT_APP_DASHBOARD_URL;
+    const target = process.env.REACT_APP_DASHBOARD_URL || localStorage.getItem('dashboard_url');
     if (target) {
       window.location.href = target;
       return;
