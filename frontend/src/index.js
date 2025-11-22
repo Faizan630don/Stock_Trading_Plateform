@@ -14,6 +14,7 @@ import Footer from './landing_page/Footer';
 import NotFound from './landing_page/NotFound';
 
 const envDash = process.env.REACT_APP_DASHBOARD_URL;
+const PROD_DASH_URL = 'https://zerodha-dashboard-kpg0.onrender.com/';
 try { if (envDash) localStorage.setItem('dashboard_url', envDash); } catch {}
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -45,7 +46,7 @@ function RedirectToDashboard(){
     const envDash2 = process.env.REACT_APP_DASHBOARD_URL;
     const savedDash2 = localStorage.getItem('dashboard_url');
     const validSaved2 = savedDash2 && /dashboard|localhost:3002/.test(savedDash2) ? savedDash2 : null;
-    const target = envDash2 || validSaved2 || (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : null);
+    const target = envDash2 || validSaved2 || (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : PROD_DASH_URL);
     if (target) {
       window.location.href = target;
       return;

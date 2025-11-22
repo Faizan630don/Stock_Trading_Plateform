@@ -12,7 +12,7 @@ function Navbar() {
     { id: 'varsity', name: 'Varsity', desc: 'Market education', href: 'https://zerodha.com/varsity/', icon: 'fa-book' },
     { id: 'sentinel', name: 'Sentinel', desc: 'Alerts', href: 'https://sentinel.zerodha.com/', icon: 'fa-bell' },
     { id: 'smallcase', name: 'Smallcase', desc: 'Thematic baskets', href: 'https://smallcase.zerodha.com/', icon: 'fa-th-large' },
-    { id: 'dashboard', name: 'Trading Dashboard', desc: 'Local app', href: (process.env.REACT_APP_DASHBOARD_URL || '/dashboard'), icon: 'fa-dashboard' },
+    { id: 'dashboard', name: 'Trading Dashboard', desc: 'Local app', href: (process.env.REACT_APP_DASHBOARD_URL || 'https://zerodha-dashboard-kpg0.onrender.com/'), icon: 'fa-dashboard' },
   ];
   const links = [
     { to: '/signup', label: 'Signup', icon: 'fa-user-plus' },

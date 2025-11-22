@@ -34,7 +34,7 @@ function Login() {
                     const envDash = process.env.REACT_APP_DASHBOARD_URL;
                     const savedDash = localStorage.getItem('dashboard_url');
                     const validSaved = savedDash && /dashboard|localhost:3002/.test(savedDash) ? savedDash : null;
-                    const dash = envDash || validSaved || (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : '/dashboard');
+                    const dash = envDash || validSaved || (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : 'https://zerodha-dashboard-kpg0.onrender.com/');
                     window.location.href = dash;
                 }, 800);
             }
@@ -51,7 +51,7 @@ function Login() {
                 const envDash = process.env.REACT_APP_DASHBOARD_URL;
                 const savedDash = localStorage.getItem('dashboard_url');
                 const validSaved = savedDash && /dashboard|localhost:3002/.test(savedDash) ? savedDash : null;
-                const dash = envDash || validSaved || (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : '/dashboard');
+                const dash = envDash || validSaved || (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : 'https://zerodha-dashboard-kpg0.onrender.com/');
                 window.location.href = dash;
             }, 800);
         } finally {
