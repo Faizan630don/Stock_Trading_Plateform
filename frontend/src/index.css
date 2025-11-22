@@ -32,3 +32,18 @@ code {
  
   
 }
+
+@media (max-width: 768px) {
+  .navbar .container {
+    padding: 8px 12px;
+  }
+  .navbar-nav {
+    display: none !important;
+  }
+  .fa-bars{
+    font-size: 22px;
+  }
+  .Footer-line{
+    font-size: 10px;
+  }
+}

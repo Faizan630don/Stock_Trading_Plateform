@@ -4,8 +4,8 @@ function Footer() {
     return ( 
         <div className='container mt-5 p-5 border-top' >
             <div className='row'>
-                <div className='col-3 p-5'>
-                    <img src='images/logo.svg' style={{width: '60%'}} alt='Logo'/>
+                <div className='col-12 col-md-3 p-5'>
+                    <img src='/images/logo.svg' style={{width: '60%'}} alt='Logo'/>
                   
                     <p className='text-muted pt-3'>
                         © 2020 - 2025, Zerodha Broking Ltd.
@@ -13,7 +13,7 @@ function Footer() {
                         All rights reserved.
                     </p>
                 </div>
-                <div className='col-3 p-5'>
+                <div className='col-12 col-md-3 p-5'>
                     <h5 className='mb-3'>Account</h5>
                     <a href='#' className='footer-link text-muted d-block text-decoration-none mt-2'>Open demat account</a>
                     <a href='#' className='footer-link text-muted d-block text-decoration-none mt-2'>Minor demat account</a>
@@ -24,7 +24,7 @@ function Footer() {
                     <a href='#' className='footer-link text-muted d-block text-decoration-none mt-2'>MTF</a>
                     <a href='#' className='footer-link text-muted d-block text-decoration-none mt-2'>Referral program</a>
                 </div>
-                <div className='col-3 p-5'>
+                <div className='col-12 col-md-3 p-5'>
                     <h5 className='mb-3'>Support</h5>
                     <a href='#' className='footer-link text-muted d-block text-decoration-none mt-2'>Contact us</a>
                     <a href='#' className='footer-link text-muted d-block text-decoration-none mt-2'>Support portal</a>
@@ -35,7 +35,7 @@ function Footer() {
                     <a href='#' className='footer-link text-muted d-block text-decoration-none mt-2'>Z-Connect blog</a>
                     <a href='#' className='footer-link text-muted d-block text-decoration-none mt-2'>Downloads</a>
                 </div>
-                <div className='col-3 p-5'>
+                <div className='col-12 col-md-3 p-5'>
                     <h5 className='mb-3'>Company</h5>
                     <a href='#' className='footer-link text-muted d-block text-decoration-none mt-2'>About</a>
                     <a href='#' className='footer-link text-muted d-block text-decoration-none mt-2'>Philosophy</a>

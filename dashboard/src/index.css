@@ -242,6 +242,24 @@ code {
   margin-top: 2%;
 }
 
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .content {
+    flex-basis: 100%;
+    padding: 16px;
+  }
+  .row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .order-table {
+    overflow-x: auto;
+  }
+}
+
 .row .col:last-child h5 {
   color: rgb(72, 194, 55);
 }

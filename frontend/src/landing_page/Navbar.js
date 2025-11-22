@@ -42,10 +42,10 @@ function Navbar() {
       </nav>
       {/* Removed the separate container for the links */}
       
-      {open && (
+            {open && (
         <div style={{
-          position: 'fixed', right: 20, top: 70, background: '#fff', border: '1px solid #eee',
-          borderRadius: 10, boxShadow: '0 8px 24px rgba(0,0,0,0.12)', width: 640, padding: 16, zIndex: 2000
+          position: 'fixed', right: 12, top: 56, background: '#fff', border: '1px solid #eee',
+          borderRadius: 10, boxShadow: '0 8px 24px rgba(0,0,0,0.12)', width: 'min(640px, calc(100vw - 24px))', padding: 16, zIndex: 2000
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
             <div style={{ fontSize: 14, color: '#666' }}>Explore</div>
@@ -53,7 +53,7 @@ function Navbar() {
               <i className="fa fa-times" aria-hidden="true"></i>
             </button>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 12 }}>
             {apps.map(app => (
               <div key={app.id} style={{ border: '1px solid #f0f0f0', borderRadius: 8, padding: 12 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
