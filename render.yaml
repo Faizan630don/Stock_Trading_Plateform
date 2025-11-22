@@ -1,19 +1,23 @@
 services:
-  - type: static_site
+  - type: web
     name: zerodha-frontend
     rootDir: frontend
+    env: node
+    plan: free
     buildCommand: npm install && npm run build
-    publishPath: build
+    startCommand: npx serve -s build -l $PORT
     envVars:
       - key: REACT_APP_DASHBOARD_URL
         value: ""
       - key: REACT_APP_API_URL
         value: ""
-  - type: static_site
+  - type: web
     name: zerodha-dashboard
     rootDir: dashboard
+    env: node
+    plan: free
     buildCommand: npm install && npm run build
-    publishPath: build
+    startCommand: npx serve -s build -l $PORT
   - type: web
     name: zerodha-backend
     rootDir: backend
