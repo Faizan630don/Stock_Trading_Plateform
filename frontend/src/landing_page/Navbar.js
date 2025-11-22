@@ -19,7 +19,7 @@ function Navbar() {
     { to: '/about', label: 'About', icon: 'fa-info-circle' },
     { to: '/product', label: 'Products', icon: 'fa-cubes' },
     { to: '/pricing', label: 'Pricing', icon: 'fa-inr' },
-    { to: '/support', label: 'Support', icon: 'fa-life-ring' },
+    { to: '/support', label: 'Support', icon: 'fa-life-ring' }, 
   ];
 
   return (
@@ -81,7 +81,10 @@ function Navbar() {
                   {app.href.startsWith('/') ? (
                     <Link className="btn btn-primary" to={app.href} onClick={()=>setOpen(false)}>Open</Link>
                   ) : (
-                    <a className="btn btn-primary" href={app.href} target="_blank" rel="noreferrer" onClick={()=>setOpen(false)}>Open</a>
+                    <a className="btn btn-primary" href={app.href} target="_blank" rel="noreferrer" onClick={()=>{
+                      localStorage.setItem('dashboard_url', app.href);
+                      setOpen(false);
+                    }}>Open</a>
                   )}
                 </div>
               </div>
