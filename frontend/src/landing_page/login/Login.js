@@ -32,7 +32,8 @@ function Login() {
                 }
                 setTimeout(() => {
                     const envDash = process.env.REACT_APP_DASHBOARD_URL;
-                    const dash = envDash ? envDash : (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : '/');
+                    const savedDash = localStorage.getItem('dashboard_url');
+                    const dash = envDash || savedDash || (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : '/');
                     window.location.href = dash;
                 }, 800);
             }
@@ -42,12 +43,13 @@ function Login() {
             localStorage.setItem('token', fakeToken);
             localStorage.setItem('user', JSON.stringify(fakeUser));
             if (!process.env.REACT_APP_DASHBOARD_URL && window.location.hostname === 'localhost') {
-                localStorage.setItem('dashboard_url', 'http://localhost:3001/');
+                localStorage.setItem('dashboard_url', 'http://localhost:3002/');
             }
             setSuccess('Login successful! Redirecting to dashboard...');
             setTimeout(() => {
                 const envDash = process.env.REACT_APP_DASHBOARD_URL;
-                const dash = envDash ? envDash : (window.location.hostname === 'localhost' ? 'http://localhost:3001/' : '/');
+                const savedDash = localStorage.getItem('dashboard_url');
+                const dash = envDash || savedDash || (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : '/');
                 window.location.href = dash;
             }, 800);
         } finally {
@@ -121,7 +123,7 @@ function Login() {
             </form>
 
             <p style={{ marginTop: '15px', textAlign: 'center' }}>
-                Don't have an account? <a href="http://localhost:3000/signup" style={{ color: '#1565C0', textDecoration: 'none', fontWeight: 'bold' }}>Sign Up</a>
+                Don't have an account? <a href="/signup" style={{ color: '#1565C0', textDecoration: 'none', fontWeight: 'bold' }}>Sign Up</a>
             </p>
         </div>
     );

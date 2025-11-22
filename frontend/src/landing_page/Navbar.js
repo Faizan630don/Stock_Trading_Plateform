@@ -12,7 +12,7 @@ function Navbar() {
     { id: 'varsity', name: 'Varsity', desc: 'Market education', href: 'https://zerodha.com/varsity/', icon: 'fa-book' },
     { id: 'sentinel', name: 'Sentinel', desc: 'Alerts', href: 'https://sentinel.zerodha.com/', icon: 'fa-bell' },
     { id: 'smallcase', name: 'Smallcase', desc: 'Thematic baskets', href: 'https://smallcase.zerodha.com/', icon: 'fa-th-large' },
-    { id: 'dashboard', name: 'Trading Dashboard', desc: 'Local app', href: '/dashboard', icon: 'fa-dashboard' },
+    { id: 'dashboard', name: 'Trading Dashboard', desc: 'Local app', href: (process.env.REACT_APP_DASHBOARD_URL || '/dashboard'), icon: 'fa-dashboard' },
   ];
   const links = [
     { to: '/signup', label: 'Signup', icon: 'fa-user-plus' },
@@ -81,7 +81,10 @@ function Navbar() {
                   {app.href.startsWith('/') ? (
                     <Link className="btn btn-primary" to={app.href} onClick={()=>setOpen(false)}>Open</Link>
                   ) : (
-                    <a className="btn btn-primary" href={app.href} target="_blank" rel="noreferrer" onClick={()=>setOpen(false)}>Open</a>
+                    <a className="btn btn-primary" href={app.href} target="_blank" rel="noreferrer" onClick={()=>{
+                      try { localStorage.setItem('dashboard_url', app.href); } catch {}
+                      setOpen(false);
+                    }}>Open</a>
                   )}
                 </div>
               </div>
