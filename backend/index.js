@@ -212,7 +212,16 @@ app.post("/newOrder", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("App started!");
-  mongoose.connect(uri);
-  console.log("DB started! Listing to port 3002");
+  console.log(`App started on ${PORT}`);
+  if (uri) {
+    mongoose
+      .connect(uri)
+      .then(() => console.log("DB started"))
+      .catch((err) => console.error("DB error", err));
+  } else {
+    console.warn("ATLAS_DB not set");
+  }
+});
+app.get("/health", (req, res) => {
+  res.send("ok");
 });
