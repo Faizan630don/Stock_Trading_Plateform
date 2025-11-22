@@ -22,7 +22,7 @@ function Navbar() {
           {/* Section 1: Logo and Main Links */}
           <div style={{ display: 'flex', alignItems: 'center' }}> 
             <Link className="navbar-brand" to="/">
-              <img src="images/logo.svg" style={{ width: 140 }} alt="Logo" />
+              <img src="/images/logo.svg" style={{ width: 140 }} alt="Logo" />
             </Link>
           </div>
           
