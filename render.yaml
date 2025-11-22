@@ -1,0 +1,26 @@
+services:
+  - type: static_site
+    name: zerodha-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishPath: build
+    envVars:
+      - key: REACT_APP_DASHBOARD_URL
+        value: ""
+      - key: REACT_APP_API_URL
+        value: ""
+  - type: static_site
+    name: zerodha-dashboard
+    rootDir: dashboard
+    buildCommand: npm install && npm run build
+    publishPath: build
+  - type: web
+    name: zerodha-backend
+    rootDir: backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: ATLAS_DB
+        value: ""
