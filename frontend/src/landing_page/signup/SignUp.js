@@ -41,15 +41,13 @@ function SignUp() {
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
                 if (!process.env.REACT_APP_DASHBOARD_URL && window.location.hostname === 'localhost') {
-                    localStorage.setItem('dashboard_url', 'http://localhost:3001/');
+                    localStorage.setItem('dashboard_url', 'http://localhost:3002/');
                 }
                 setTimeout(() => {
                     const envDash = process.env.REACT_APP_DASHBOARD_URL;
                     const savedDash = localStorage.getItem('dashboard_url');
-                    const guessDash = (window.location.hostname.endsWith('onrender.com') && window.location.hostname.includes('frontend'))
-                      ? `${window.location.protocol}//${window.location.hostname.replace('frontend', 'dashboard')}/`
-                      : null;
-                    const dash = envDash || savedDash || (window.location.hostname === 'localhost' ? 'http://localhost:3001/' : (guessDash || '/'));
+                    const validSaved = savedDash && /dashboard|localhost:3002/.test(savedDash) ? savedDash : null;
+                    const dash = envDash || validSaved || (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : '/dashboard');
                     window.location.href = dash;
                 }, 800);
             }
@@ -59,16 +57,14 @@ function SignUp() {
             localStorage.setItem('token', fakeToken);
             localStorage.setItem('user', JSON.stringify(fakeUser));
             if (!process.env.REACT_APP_DASHBOARD_URL && window.location.hostname === 'localhost') {
-                localStorage.setItem('dashboard_url', 'http://localhost:3001/');
+                localStorage.setItem('dashboard_url', 'http://localhost:3002/');
             }
             setSuccess('Signup successful! Redirecting to dashboard...');
             setTimeout(() => {
                 const envDash = process.env.REACT_APP_DASHBOARD_URL;
                 const savedDash = localStorage.getItem('dashboard_url');
-                const guessDash = (window.location.hostname.endsWith('onrender.com') && window.location.hostname.includes('frontend'))
-                  ? `${window.location.protocol}//${window.location.hostname.replace('frontend', 'dashboard')}/`
-                  : null;
-                const dash = envDash || savedDash || (window.location.hostname === 'localhost' ? 'http://localhost:3001/' : (guessDash || '/'));
+                const validSaved = savedDash && /dashboard|localhost:3002/.test(savedDash) ? savedDash : null;
+                const dash = envDash || validSaved || (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : '/dashboard');
                 window.location.href = dash;
             }, 800);
         } finally {

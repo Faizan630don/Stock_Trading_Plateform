@@ -44,10 +44,8 @@ function RedirectToDashboard(){
   useEffect(() => {
     const envDash2 = process.env.REACT_APP_DASHBOARD_URL;
     const savedDash2 = localStorage.getItem('dashboard_url');
-    const guessDash2 = (window.location.hostname.endsWith('onrender.com') && window.location.hostname.includes('frontend'))
-      ? `${window.location.protocol}//${window.location.hostname.replace('frontend', 'dashboard')}/`
-      : null;
-    const target = envDash2 || savedDash2 || (window.location.hostname === 'localhost' ? 'http://localhost:3001/' : (guessDash2 || null));
+    const validSaved2 = savedDash2 && /dashboard|localhost:3002/.test(savedDash2) ? savedDash2 : null;
+    const target = envDash2 || validSaved2 || (window.location.hostname === 'localhost' ? 'http://localhost:3002/' : null);
     if (target) {
       window.location.href = target;
       return;
